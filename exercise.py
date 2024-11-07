@@ -141,7 +141,7 @@ weather_advice()
 # - The function should first prompt the user to enter the month (as three characters): "Enter the month of the year (Jan - Dec):"
 # - Then, the function should prompt the user to enter the day of the month: "Enter the day of the month:"
 # - Determine the current season based on the date:
-#      - Dec 21 - Mar 19: Winter
+#      - Dec 21 - Mar 19: Winter 12-21, 1, 2, 3-19
 #      - Mar 20 - Jun 20: Spring
 #      - Jun 21 - Sep 21: Summer
 #      - Sep 22 - Dec 20: Fall
@@ -152,4 +152,35 @@ weather_advice()
 # - Adjust the season based on the day of the month when needed.
 # - Ensure to validate input formats and handle unexpected inputs gracefully.
 
+
+def determine_season():
+
+    month = input("Please enter the month in it's abbreviated form (first 3 letters, i.e. January is jan):")
+    day = input("Please enter the day of the month:")
+
+    month = month.upper()
+    day = int(day)
+
+    if (month in ('JAN', 'FEB')):
+        season = 'winter'
+    elif (month == 'DEC' and day >= 21) or (month == 'MAR' and day <= 19):
+        season = 'winter'
+    elif (month in ('APR', 'MAY')):
+        season = 'spring'
+    elif (month == 'MAR' and day >= 20) or (month == 'JUN' and day <= 20):
+        season = 'spring'
+    elif (month in ('JUL', 'AUG')):
+        season = 'summer'   
+    elif (month == 'JUN' and day >= 21) or (month == 'SEP' and day <= 21):
+        season = 'summer'
+    elif (month in ('OCT', 'NOV')):
+        season = 'fall'
+    elif (month == 'SEP' and day >= 22) or (month == 'DEC' and day <= 20):
+        season = 'fall'
+    else:
+        season = 'unknown season'
+        
+    print(f'{month} {day} is in {season}')
+
+determine_season()
 
